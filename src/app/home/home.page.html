@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align: center">
+      Scanner Beacon BLE
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="!beaconData; else beaconFound">
+    <ion-card  style="background: teal">
+      <ion-row justify-content-center="true" align-items-center="true">
+        <ion-card-header>
+          <h1 style="color: white"> Scanner Beacon BLE</h1>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-chip outline="true" color="light" (click)="startScanningForBeacons()">
+            <ion-icon name="bluetooth"></ion-icon>
+            <ion-label>SCAN</ion-label>
+          </ion-chip>
+        </ion-card-content>
+        {{beaconData.name}}
+      </ion-row>
+    </ion-card>
+
+
+  </div>
+  <ng-template #beaconFound>
+    <ion-card style="background: teal">
+      <ion-row justify-content-center="true" align-items-center="true">
+        <ion-card-content>
+          <h1 style="color: white">{{beaconData.name}}</h1>
+          <br>
+          <ion-item lines="none"> {{beaconData.address}}</ion-item>
+          <ion-row justify-content-center="true" align-items-center="true">
+            <ion-chip outline="true" color="light" (click)="stopScanningForBeacons()">
+              <ion-icon name="bluetooth"></ion-icon>
+              <ion-label>STOP</ion-label>
+            </ion-chip>
+            <ion-chip outline="true" color="light" (click)="startScanningForBeacons()">
+              <ion-icon name="bluetooth"></ion-icon>
+              <ion-label>SCAN</ion-label>
+            </ion-chip>
+            <ion-chip outline="true" color="light" (click)="backHome()">
+              <ion-icon name="home"></ion-icon>
+              <ion-label>HOME</ion-label>
+            </ion-chip>
+          </ion-row>
+        </ion-card-content>
+      </ion-row>
+    </ion-card>
+  </ng-template>
+</ion-content>
+
